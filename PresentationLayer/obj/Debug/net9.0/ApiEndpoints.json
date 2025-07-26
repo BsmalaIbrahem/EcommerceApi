@@ -1,0 +1,76 @@
+[
+  {
+    "ContainingType": "PresentationLayer.Areas.Identity.Controllers.AccountController",
+    "Method": "ConfirmEmail",
+    "RelativePath": "api/Identity/Account/ConfirmEmail/ConfirmEmail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PresentationLayer.Areas.Identity.Controllers.AccountController",
+    "Method": "Login",
+    "RelativePath": "api/Identity/Account/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ApplicationLayer.DTOs.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PresentationLayer.Areas.Identity.Controllers.AccountController",
+    "Method": "Regiser",
+    "RelativePath": "api/Identity/Account/Regiser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ApplicationLayer.DTOs.RegisterRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PresentationLayer.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[PresentationLayer.WeatherForecast, PresentationLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

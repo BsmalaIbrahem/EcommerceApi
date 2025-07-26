@@ -1,0 +1,14 @@
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\bin\Debug\net9.0\DomainLayer.deps.json
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\bin\Debug\net9.0\DomainLayer.runtimeconfig.json
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\bin\Debug\net9.0\DomainLayer.dll
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\bin\Debug\net9.0\DomainLayer.pdb
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\DomainLayer.csproj.AssemblyReference.cache
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\DomainLayer.AssemblyInfoInputs.cache
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\DomainLayer.AssemblyInfo.cs
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\DomainLayer.csproj.CoreCompileInputs.cache
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\DomainLayer.dll
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\refint\DomainLayer.dll
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\DomainLayer.pdb
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\DomainLayer.genruntimeconfig.cache
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\ref\DomainLayer.dll

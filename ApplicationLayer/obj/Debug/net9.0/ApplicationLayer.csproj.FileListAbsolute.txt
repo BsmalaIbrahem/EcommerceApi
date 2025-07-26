@@ -1,0 +1,12 @@
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\bin\Debug\net9.0\ApplicationLayer.deps.json
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\bin\Debug\net9.0\ApplicationLayer.dll
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\bin\Debug\net9.0\ApplicationLayer.pdb
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.AssemblyInfoInputs.cache
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.AssemblyInfo.cs
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.csproj.CoreCompileInputs.cache
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.dll
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\refint\ApplicationLayer.dll
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.pdb
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ref\ApplicationLayer.dll
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.csproj.AssemblyReference.cache
