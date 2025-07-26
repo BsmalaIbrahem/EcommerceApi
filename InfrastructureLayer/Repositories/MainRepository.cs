@@ -1,4 +1,4 @@
-﻿using ApplicationLayer.Interfaces;
+﻿using ApplicationLayer.Interfaces.IRepositories;
 using InfrastructureLayer.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
@@ -114,5 +114,11 @@ namespace InfrastructureLayer.Repositories
         {
             await _context.SaveChangesAsync();
         }
+
+        public IQueryable<T> Query()
+        {
+            return _context.Set<T>().AsQueryable();
+        }
+
     }
 }

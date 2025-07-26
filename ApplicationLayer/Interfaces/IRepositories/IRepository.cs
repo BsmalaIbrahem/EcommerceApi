@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Query;
 
-namespace ApplicationLayer.Interfaces
+namespace ApplicationLayer.Interfaces.IRepositories
 {
     public interface IRepository<T> where T : class
     {
@@ -22,5 +22,6 @@ namespace ApplicationLayer.Interfaces
         Task UpdateAsync(T entity);
         Task DeleteAsync(Expression<Func<T, bool>> expression);
         Task SaveChangesAsync();
+        IQueryable<T> Query();
     }
 }

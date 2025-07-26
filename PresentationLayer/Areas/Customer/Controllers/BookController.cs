@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using ApplicationLayer.Interfaces;
+using DomainLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Areas.Customer.Controllers
@@ -10,6 +12,7 @@ namespace PresentationLayer.Areas.Customer.Controllers
     [Authorize]
     public class BookController : Controller
     {
+        
         public IActionResult Index()
         {
             return View();

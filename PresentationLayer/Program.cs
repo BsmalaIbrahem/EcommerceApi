@@ -1,4 +1,6 @@
+using ApplicationLayer.Interfaces.IRepositories;
 using InfrastructureLayer.Data;
+using InfrastructureLayer.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -20,6 +22,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("MyConnection")
    ));
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(MainRepository<>));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(option =>
 {
