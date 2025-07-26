@@ -50,6 +50,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[9.0.3, )"
@@ -196,6 +200,9 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
+              "E:\\C#\\ErraSoft\\EcommerceApi\\ApplicationLayer\\ApplicationLayer.csproj": {
+                "projectPath": "E:\\C#\\ErraSoft\\EcommerceApi\\ApplicationLayer\\ApplicationLayer.csproj"
+              },
               "E:\\C#\\ErraSoft\\EcommerceApi\\DomainLayer\\DomainLayer.csproj": {
                 "projectPath": "E:\\C#\\ErraSoft\\EcommerceApi\\DomainLayer\\DomainLayer.csproj"
               }

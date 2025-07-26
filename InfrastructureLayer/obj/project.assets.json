@@ -1732,6 +1732,20 @@
           }
         }
       },
+      "ApplicationLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "9.0.7",
+          "Swashbuckle.AspNetCore": "9.0.3"
+        },
+        "compile": {
+          "bin/placeholder/ApplicationLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ApplicationLayer.dll": {}
+        }
+      },
       "DomainLayer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -5041,6 +5055,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "ApplicationLayer/1.0.0": {
+      "type": "project",
+      "path": "../ApplicationLayer/ApplicationLayer.csproj",
+      "msbuildProject": "../ApplicationLayer/ApplicationLayer.csproj"
+    },
     "DomainLayer/1.0.0": {
       "type": "project",
       "path": "../DomainLayer/DomainLayer.csproj",
@@ -5049,6 +5068,7 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "ApplicationLayer >= 1.0.0",
       "DomainLayer >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 9.0.7",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 9.0.7",
@@ -5090,6 +5110,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
+            "E:\\C#\\ErraSoft\\EcommerceApi\\ApplicationLayer\\ApplicationLayer.csproj": {
+              "projectPath": "E:\\C#\\ErraSoft\\EcommerceApi\\ApplicationLayer\\ApplicationLayer.csproj"
+            },
             "E:\\C#\\ErraSoft\\EcommerceApi\\DomainLayer\\DomainLayer.csproj": {
               "projectPath": "E:\\C#\\ErraSoft\\EcommerceApi\\DomainLayer\\DomainLayer.csproj"
             }
