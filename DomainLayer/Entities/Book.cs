@@ -16,10 +16,11 @@ namespace DomainLayer.Entities
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Author { get; set; } = string.Empty;
-        public DateTime PublishedDate { get; set; }
+        public DateTime? PublishedDate { get; set; }
         public string ISBN { get; set; } = string.Empty;
         public int PageCount { get; set; }
         public double Price { get; set; }
         public string ImgPath { get; set; } = string.Empty;
+        public int Quantity { get; set; }
     }
 }

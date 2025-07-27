@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v9.0": {
       "InfrastructureLayer/1.0.0": {
         "dependencies": {
+          "ApplicationLayer": "1.0.0",
           "DomainLayer": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.7",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.7",
@@ -1105,6 +1106,18 @@
           }
         }
       },
+      "ApplicationLayer/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "9.0.7",
+          "Swashbuckle.AspNetCore": "9.0.3"
+        },
+        "runtime": {
+          "ApplicationLayer.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "DomainLayer/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.7",
@@ -1729,6 +1742,11 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "ApplicationLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "DomainLayer/1.0.0": {
       "type": "project",

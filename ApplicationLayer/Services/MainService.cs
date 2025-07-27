@@ -34,17 +34,17 @@ namespace ApplicationLayer.Services
 
         public async Task<bool> ExistsAsync(int id)
         {
-            var exists = await _repository.GetOneAsync(x => EF.Property<int>(x, "Id") == id);
+            var exists = await _repository.GetOneAsync([x => EF.Property<int>(x, "Id") == id]);
             return exists != null;
         }
 
-        public async Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>>? filter = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? includes = null)
+        public async Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>>[]? filter = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? includes = null)
         {
-            var data = await _repository.GetAllAsync(filter: filter, includeChain: includes);
+            var data = await _repository.GetAllAsync(filters: filter, includeChain: includes);
             return data;
         }
 
-        public async Task<T?> GetOneAsync(Expression<Func<T, bool>>? filter = null)
+        public async Task<T?> GetOneAsync(Expression<Func<T, bool>>[]? filter = null)
         {
             var data = await _repository.GetOneAsync(filter);
             if (data == null)
@@ -54,10 +54,10 @@ namespace ApplicationLayer.Services
             return data;
         }
 
-        public async Task<ModelsWithPaginationResponse<T>> GetWithPaginationAsync(Expression<Func<T, bool>>? filter = null, int pageNumber = 1, int PageSize = 5, Func<IQueryable<T>, IIncludableQueryable<T, object>>? includes = null)
+        public async Task<ModelsWithPaginationResponse<T>> GetWithPaginationAsync(Expression<Func<T, bool>>[]? filter = null, int pageNumber = 1, int PageSize = 5, Func<IQueryable<T>, IIncludableQueryable<T, object>>? includes = null)
         {
             var skip = (pageNumber - 1) * PageSize;
-            var items = await _repository.GetAllAsync(filter: filter, skip: skip, take: PageSize, includeChain: includes);
+            var items = await _repository.GetAllAsync(filters: filter, skip: skip, take: PageSize, includeChain: includes);
            
             var totalCount = await _repository.CountAsync(filter);
 
@@ -76,7 +76,7 @@ namespace ApplicationLayer.Services
 
         public async Task UpdateAsync(T entity)
         {
-           await _repository.UpdateAsync(entity);
+            _repository.UpdateAsync(entity);
            await _repository.SaveChangesAsync();
            
         }

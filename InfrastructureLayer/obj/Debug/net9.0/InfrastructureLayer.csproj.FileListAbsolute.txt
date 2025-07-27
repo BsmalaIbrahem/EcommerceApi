@@ -15,3 +15,6 @@ E:\C#\ErraSoft\EcommerceApi\InfrastructureLayer\obj\Debug\net9.0\InfrastructureL
 E:\C#\ErraSoft\EcommerceApi\InfrastructureLayer\bin\Debug\net9.0\DomainLayer.dll
 E:\C#\ErraSoft\EcommerceApi\InfrastructureLayer\bin\Debug\net9.0\DomainLayer.pdb
 E:\C#\ErraSoft\EcommerceApi\InfrastructureLayer\obj\Debug\net9.0\Infrastr.B5BC0072.Up2Date
+E:\C#\ErraSoft\EcommerceApi\InfrastructureLayer\bin\Debug\net9.0\ApplicationLayer.dll
+E:\C#\ErraSoft\EcommerceApi\InfrastructureLayer\bin\Debug\net9.0\ApplicationLayer.pdb
+E:\C#\ErraSoft\EcommerceApi\InfrastructureLayer\obj\Debug\net9.0\InfrastructureLayer.sourcelink.json

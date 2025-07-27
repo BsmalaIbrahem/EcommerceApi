@@ -31,7 +31,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "E:\\C#\\ErraSoft\\EcommerceApi\\DomainLayer\\DomainLayer.csproj": {
+                "projectPath": "E:\\C#\\ErraSoft\\EcommerceApi\\DomainLayer\\DomainLayer.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

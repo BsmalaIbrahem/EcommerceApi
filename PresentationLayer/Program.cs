@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SharedLayer.Utility;
 using System.Text;
+using ApplicationLayer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
    ));
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(MainRepository<>));
+builder.Services.AddApplicationServices();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(option =>
 {

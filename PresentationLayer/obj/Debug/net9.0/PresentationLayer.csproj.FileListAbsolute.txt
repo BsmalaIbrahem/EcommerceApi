@@ -287,3 +287,4 @@ E:\C#\ErraSoft\EcommerceApi\PresentationLayer\obj\Debug\net9.0\staticwebassets.u
 E:\C#\ErraSoft\EcommerceApi\PresentationLayer\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\C#\ErraSoft\EcommerceApi\PresentationLayer\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\C#\ErraSoft\EcommerceApi\PresentationLayer\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\C#\ErraSoft\EcommerceApi\PresentationLayer\obj\Debug\net9.0\PresentationLayer.sourcelink.json

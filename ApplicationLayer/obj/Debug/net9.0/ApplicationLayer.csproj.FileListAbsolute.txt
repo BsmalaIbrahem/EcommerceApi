@@ -10,3 +10,4 @@ E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\refint\Application
 E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.pdb
 E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ref\ApplicationLayer.dll
 E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.csproj.AssemblyReference.cache
+E:\C#\ErraSoft\EcommerceApi\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.sourcelink.json
