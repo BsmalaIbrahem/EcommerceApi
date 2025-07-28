@@ -1108,6 +1108,7 @@
       },
       "ApplicationLayer/1.0.0": {
         "dependencies": {
+          "DomainLayer": "1.0.0",
           "Microsoft.EntityFrameworkCore": "9.0.7",
           "Swashbuckle.AspNetCore": "9.0.3"
         },

@@ -12,3 +12,4 @@ E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\refint\DomainLayer.dll
 E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\DomainLayer.pdb
 E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\DomainLayer.genruntimeconfig.cache
 E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\ref\DomainLayer.dll
+E:\C#\ErraSoft\EcommerceApi\DomainLayer\obj\Debug\net9.0\DomainLayer.sourcelink.json

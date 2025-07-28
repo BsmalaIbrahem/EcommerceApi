@@ -1,6 +1,7 @@
 ﻿using ApplicationLayer.DTOs;
 using ApplicationLayer.Interfaces.IServices;
 using DomainLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SharedLayer.Helpers;
@@ -11,6 +12,7 @@ namespace PresentationLayer.Areas.Admin.Controllers
     [Area("Admin")]
     [Route("api/Admin/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class BookController : Controller
     {
         private readonly IBookService _service;

@@ -10,3 +10,4 @@ E:\C#\ErraSoft\EcommerceApi\SharedLayer\obj\Debug\net9.0\SharedLayer.dll
 E:\C#\ErraSoft\EcommerceApi\SharedLayer\obj\Debug\net9.0\refint\SharedLayer.dll
 E:\C#\ErraSoft\EcommerceApi\SharedLayer\obj\Debug\net9.0\SharedLayer.pdb
 E:\C#\ErraSoft\EcommerceApi\SharedLayer\obj\Debug\net9.0\ref\SharedLayer.dll
+E:\C#\ErraSoft\EcommerceApi\SharedLayer\obj\Debug\net9.0\SharedLayer.sourcelink.json

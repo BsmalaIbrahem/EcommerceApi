@@ -44,9 +44,9 @@ namespace ApplicationLayer.Services
             return data;
         }
 
-        public async Task<T?> GetOneAsync(Expression<Func<T, bool>>[]? filter = null)
+        public async Task<T?> GetOneAsync(Expression<Func<T, bool>>[]? filter = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? includes = null)
         {
-            var data = await _repository.GetOneAsync(filter);
+            var data = await _repository.GetOneAsync(filter, includeChain: includes);
             if (data == null)
             {
                 throw new KeyNotFoundException($"Entity not found.");
