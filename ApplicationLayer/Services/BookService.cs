@@ -15,11 +15,11 @@ namespace ApplicationLayer.Services
 {
     public class BookService : MainService<Book>, IBookService
     {
-        public BookService(IRepository<Book> repository) : base(repository)
+        public BookService(IRepository<Book> repository, IUnitOfWork unitOfWork) : base(repository, unitOfWork)
         {
         }
 
-        public  async Task<ModelsWithPaginationResponse<Book>> GetWithPaginationAsync(FilterBookRequest filter)
+        public  async Task<ModelsWithPaginationResponse<Book>> GetWithPaginationAsync(FilterBookRequest filter, CancellationToken cancellationToken = default)
         {
             var conditions = new List<Expression<Func<Book, bool>>>();
             if (filter.CategoryId != null)
@@ -35,7 +35,7 @@ namespace ApplicationLayer.Services
             }
 
             Func<IQueryable<Book>, IIncludableQueryable<Book, object>>  includes = x => x.Include(b => b.Category);
-            return await base.GetWithPaginationAsync(conditions.ToArray(), filter.paginationRequest.PageNumber, filter.paginationRequest.PageSize, includes);
+            return await base.GetWithPaginationAsync(conditions.ToArray(), filter.paginationRequest.PageNumber, filter.paginationRequest.PageSize, includes, cancellationToken);
         }
 
 

@@ -10,18 +10,18 @@ namespace ApplicationLayer.Interfaces.IRepositories
 {
     public interface IRepository<T> where T : class
     {
-        Task<T?> GetOneAsync(Expression<Func<T, bool>>[]? expression = null, Func<IQueryable<T>,
+        Task<T?> GetOneAsync(IEnumerable<Expression<Func<T, bool>>>? filters = null, Func<IQueryable<T>,
             IIncludableQueryable<T, object>>? includeChain = null,
-            bool AsNoTracking = false);
-        Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>[]? filters = null,
+            bool AsNoTracking = false, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, CancellationToken cancellationToken = default);
+        Task<IEnumerable<T>> GetAllAsync(IEnumerable<Expression<Func<T, bool>>>? filters = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>>? includeChain = null,
             bool asNoTracking = false, int? skip = null, int? take = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null);
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, CancellationToken cancellationToken = default);
         Task<int> CountAsync(Expression<Func<T, bool>>[]? expression = null);
         Task AddAsync(T entity);
         void UpdateAsync(T entity);
         Task DeleteAsync(Expression<Func<T, bool>> expression);
-        Task SaveChangesAsync();
+       
         IQueryable<T> Query();
     }
 }

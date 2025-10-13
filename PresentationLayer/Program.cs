@@ -25,6 +25,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
    ));
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(MainRepository<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 builder.Services.AddApplicationServices();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(option =>

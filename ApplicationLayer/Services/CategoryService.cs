@@ -13,16 +13,16 @@ namespace ApplicationLayer.Services
 {
     public class CategoryService : MainService<Category>, ICategoryService
     {
-        public CategoryService(IRepository<Category> repository) : base(repository)
+        public CategoryService(IRepository<Category> repository, IUnitOfWork unitOfWork) : base(repository, unitOfWork)
         {
         }
 
-        public Task<Category?> GetOneAsync(Expression<Func<Category, bool>>[]? filter = null)
+        public Task<Category?> GetOneAsync(Expression<Func<Category, bool>>[]? filter = null, CancellationToken cancellationToken = default)
         {
-            return base.GetOneAsync(filter, includes: x=>x.Include(q => q.Books));
+            return base.GetOneAsync(filter, includes: x=>x.Include(q => q.Books), cancellationToken);
         }
 
-        public async Task<bool> IsUnique(string name, int id = 0)
+        public async Task<bool> IsUnique(string name, int id = 0, CancellationToken cancellationToken = default)
         {
             Expression<Func<Category, bool>>[]? filter = null;
             if(id > 0)
@@ -34,7 +34,7 @@ namespace ApplicationLayer.Services
                 filter = [c => c.Name == name];
             }
 
-            var existingCategory = await GetOneAsync(filter: filter);
+            var existingCategory = await GetOneAsync(filter: filter, cancellationToken);
             return existingCategory == null;
         }
     }

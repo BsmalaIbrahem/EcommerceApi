@@ -283,8 +283,8 @@ E:\C#\ErraSoft\EcommerceApi\PresentationLayer\bin\Debug\net9.0\Microsoft.Extensi
 E:\C#\ErraSoft\EcommerceApi\PresentationLayer\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Embedded.dll
 E:\C#\ErraSoft\EcommerceApi\PresentationLayer\bin\Debug\net9.0\SharedLayer.dll
 E:\C#\ErraSoft\EcommerceApi\PresentationLayer\bin\Debug\net9.0\SharedLayer.pdb
-E:\C#\ErraSoft\EcommerceApi\PresentationLayer\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 E:\C#\ErraSoft\EcommerceApi\PresentationLayer\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\C#\ErraSoft\EcommerceApi\PresentationLayer\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\C#\ErraSoft\EcommerceApi\PresentationLayer\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 E:\C#\ErraSoft\EcommerceApi\PresentationLayer\obj\Debug\net9.0\PresentationLayer.sourcelink.json
+E:\C#\ErraSoft\EcommerceApi\PresentationLayer\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

@@ -19,10 +19,11 @@ namespace InfrastructureLayer.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>[]? filters = null,
+        public async Task<IEnumerable<T>> GetAllAsync(IEnumerable<Expression<Func<T, bool>>>? filters = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>>? includeChain = null,
             bool asNoTracking = false, int? skip = null, int? take = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+            CancellationToken cancellationToken = default
         )
         {
             IQueryable<T> query = _context.Set<T>();
@@ -42,26 +43,37 @@ namespace InfrastructureLayer.Repositories
             if (orderBy != null)
                 query = orderBy(query);
 
-            if (skip.HasValue && take.HasValue)
-                query = query.Skip(skip.Value).Take(take.Value);
+            if (skip.HasValue)
+                query = query.Skip(skip.Value);
+            if(take.HasValue)
+                query = query.Take(take.Value);
 
-            return await query.ToListAsync();
+            return await query.ToListAsync(cancellationToken);
         }
 
         public async Task<T?> GetOneAsync(
-            Expression<Func<T, bool>>[]? filters = null,
+            IEnumerable<Expression<Func<T, bool>>>? filters = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>>? includeChain = null,
-            bool asNoTracking = false)
+            bool asNoTracking = false, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, CancellationToken cancellationToken = default)
         {
-            return (await GetAllAsync(filters, includeChain, asNoTracking)).FirstOrDefault();
-        }
+            IQueryable<T> query = _context.Set<T>();
 
+            if (filters != null)
+            {
+                foreach (var filter in filters)
+                    query = query.Where(filter);
+            }
 
-        public async Task<T?> GetOneAsync(Expression<Func<T, bool>>[]? expression = null, Expression<Func<T, object>>[]? Includes = null,
-            Func<IQueryable<T>, IIncludableQueryable<T, object>>? includeChain = null, bool AsNoTracking = false)
-        {
-            var data = await GetAllAsync(expression, includeChain: includeChain, asNoTracking: AsNoTracking);
-            return data.FirstOrDefault();
+            if (includeChain != null)
+                query = includeChain(query);
+
+            if (asNoTracking)
+                query = query.AsNoTracking();
+
+            if (orderBy != null)
+                query = orderBy(query);
+
+            return await query.FirstOrDefaultAsync(cancellationToken);
         }
 
         public async Task<int> CountAsync(Expression<Func<T, bool>>[]? expression = null)
@@ -114,11 +126,7 @@ namespace InfrastructureLayer.Repositories
                 throw new Exception("An error occurred while deleting the entity.", ex);
             }
         }
-        public async Task SaveChangesAsync()
-        {
-            await _context.SaveChangesAsync();
-        }
-
+      
         public IQueryable<T> Query()
         {
             return _context.Set<T>().AsQueryable();

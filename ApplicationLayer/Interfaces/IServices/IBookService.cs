@@ -12,6 +12,6 @@ namespace ApplicationLayer.Interfaces.IServices
 {
     public interface IBookService : IService<Book>
     {
-        Task<ModelsWithPaginationResponse<Book>> GetWithPaginationAsync(FilterBookRequest filter);
+        Task<ModelsWithPaginationResponse<Book>> GetWithPaginationAsync(FilterBookRequest filter, CancellationToken cancellationToken = default);
     }
 }

@@ -15,38 +15,40 @@ namespace ApplicationLayer.Services
     public class MainService<T> : IService<T> where T : class
     {
         private readonly IRepository<T> _repository;
-        public MainService(IRepository<T> repository) 
+        private  readonly IUnitOfWork _unitOfWork;
+        public MainService(IRepository<T> repository, IUnitOfWork _unitOfWork) 
         {
             _repository = repository;
+            this._unitOfWork = _unitOfWork;
         }
 
-        public async Task CreateAsync(T entity)
+        public async Task CreateAsync(T entity, CancellationToken cancellationToken = default)
         {
             await _repository.AddAsync(entity);
-            await _repository.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task DeleteAsync(Expression<Func<T, bool>> filter)
+        public async Task DeleteAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default)
         {
             await _repository.DeleteAsync(filter);
-            await _repository.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<bool> ExistsAsync(int id)
+        public async Task<bool> ExistsAsync(int id, CancellationToken cancellationToken = default)
         {
-            var exists = await _repository.GetOneAsync([x => EF.Property<int>(x, "Id") == id]);
+            var exists = await _repository.GetOneAsync([x => EF.Property<int>(x, "Id") == id], cancellationToken: cancellationToken);
             return exists != null;
         }
 
-        public async Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>>[]? filter = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? includes = null)
+        public async Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>>[]? filter = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? includes = null, CancellationToken cancellationToken = default)
         {
-            var data = await _repository.GetAllAsync(filters: filter, includeChain: includes);
+            var data = await _repository.GetAllAsync(filters: filter, includeChain: includes, cancellationToken: cancellationToken);
             return data;
         }
 
-        public async Task<T?> GetOneAsync(Expression<Func<T, bool>>[]? filter = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? includes = null)
+        public async Task<T?> GetOneAsync(Expression<Func<T, bool>>[]? filter = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? includes = null, CancellationToken cancellationToken = default)
         {
-            var data = await _repository.GetOneAsync(filter, includeChain: includes);
+            var data = await _repository.GetOneAsync(filter, includeChain: includes, cancellationToken: cancellationToken);
             if (data == null)
             {
                 throw new KeyNotFoundException($"Entity not found.");
@@ -54,10 +56,10 @@ namespace ApplicationLayer.Services
             return data;
         }
 
-        public async Task<ModelsWithPaginationResponse<T>> GetWithPaginationAsync(Expression<Func<T, bool>>[]? filter = null, int pageNumber = 1, int PageSize = 5, Func<IQueryable<T>, IIncludableQueryable<T, object>>? includes = null)
+        public async Task<ModelsWithPaginationResponse<T>> GetWithPaginationAsync(Expression<Func<T, bool>>[]? filter = null, int pageNumber = 1, int PageSize = 5, Func<IQueryable<T>, IIncludableQueryable<T, object>>? includes = null, CancellationToken cancellationToken = default)
         {
             var skip = (pageNumber - 1) * PageSize;
-            var items = await _repository.GetAllAsync(filters: filter, skip: skip, take: PageSize, includeChain: includes);
+            var items = await _repository.GetAllAsync(filters: filter, skip: skip, take: PageSize, includeChain: includes, cancellationToken: cancellationToken);
            
             var totalCount = await _repository.CountAsync(filter);
 
@@ -74,10 +76,10 @@ namespace ApplicationLayer.Services
             return data;
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
         {
             _repository.UpdateAsync(entity);
-           await _repository.SaveChangesAsync();
+           await _unitOfWork.SaveChangesAsync(cancellationToken);
            
         }
     }

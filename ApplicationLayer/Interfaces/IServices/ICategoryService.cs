@@ -11,7 +11,7 @@ namespace ApplicationLayer.Interfaces.IServices
 {
     public interface ICategoryService : IService<Category>
     {
-        Task<Category?> GetOneAsync(Expression<Func<Category, bool>>[]? filter = null);
-        Task<bool> IsUnique(string name, int id =0);
+        Task<Category?> GetOneAsync(Expression<Func<Category, bool>>[]? filter = null, CancellationToken cancellationToken = default);
+        Task<bool> IsUnique(string name, int id =0, CancellationToken cancellationToken = default);
     }
 }
