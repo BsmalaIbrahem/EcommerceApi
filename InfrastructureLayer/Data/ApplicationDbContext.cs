@@ -22,34 +22,6 @@ namespace InfrastructureLayer.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<IdentityRole>().HasData(
-                new IdentityRole
-                {
-                    Id = "1",
-                    Name = "Admin",
-                    NormalizedName = "ADMIN"
-                },
-                new IdentityRole
-                {
-                    Id = "2",
-                    Name = "User",
-                    NormalizedName = "USER"
-                }
-            );
-
-            builder.Entity<ApplicationUser>().HasData(
-                new ApplicationUser
-                {
-                    Id = "1",
-                    UserName = "Admin",
-                    NormalizedUserName = "ADMIN",
-                    Email = "admin@gmail.com",
-                    NormalizedEmail = "admin@gmail.com",
-                    FirstName = "Super",
-                    LastName = "Admin",
-                    PasswordHash = new PasswordHasher<ApplicationUser>().HashPassword(null, "Admin@123"),
-                }
-            );
         }
     }
 }

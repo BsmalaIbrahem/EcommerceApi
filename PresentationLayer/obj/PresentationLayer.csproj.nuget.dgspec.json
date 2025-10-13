@@ -209,6 +209,9 @@
               },
               "E:\\C#\\ErraSoft\\EcommerceApi\\DomainLayer\\DomainLayer.csproj": {
                 "projectPath": "E:\\C#\\ErraSoft\\EcommerceApi\\DomainLayer\\DomainLayer.csproj"
+              },
+              "E:\\C#\\ErraSoft\\EcommerceApi\\SharedLayer\\SharedLayer.csproj": {
+                "projectPath": "E:\\C#\\ErraSoft\\EcommerceApi\\SharedLayer\\SharedLayer.csproj"
               }
             }
           }
