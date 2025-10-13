@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.DTOs
 {
-    public class CreateCategoryRequest
+    public record CreateCategoryRequest
     {
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;

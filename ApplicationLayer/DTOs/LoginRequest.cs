@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.DTOs
 {
-    public class LoginRequest
+    public record LoginRequest
     {
         [Required(ErrorMessage = "Username or email is required.")]
         public string UseNameOrEmail { get; set; } = string.Empty;

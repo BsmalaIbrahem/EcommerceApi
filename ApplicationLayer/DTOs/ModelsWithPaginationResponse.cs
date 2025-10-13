@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.DTOs
 {
-    public class ModelsWithPaginationResponse<T> where T : class
+    public record ModelsWithPaginationResponse<T> where T : class
     {
         public IEnumerable<T>? Items { get; set; }
         public PaginationResponse Pagination { get; set; } = null!;

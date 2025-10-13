@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.DTOs
 {
-    public class RegisterRequest
+    public record RegisterRequest
     {
         [Required(ErrorMessage = "First name is required.")]
         public string FirstName { get; set; } = string.Empty;

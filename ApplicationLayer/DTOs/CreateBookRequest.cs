@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.DTOs
 {
-    public class CreateBookRequest
+    public record CreateBookRequest
     {
         [Required(ErrorMessage = "Category ID is required.")]
         public int CategoryId { get; set; }

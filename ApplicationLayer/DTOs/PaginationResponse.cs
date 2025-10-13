@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationLayer.DTOs
 {
-    public class PaginationResponse
+    public record PaginationResponse
     {
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 5;
