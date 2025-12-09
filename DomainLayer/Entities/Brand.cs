@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DomainLayer.Entities
 {
-    public class Category : BaseEntity
+    public class Brand : BaseEntity
     {
         public int Id { get; set; }
         public string? ImagePath { get; set; }
-        public ICollection<CategoryTranslation> CategoryTranslations { get; set; } = new List<CategoryTranslation>();
+        public ICollection<BrandTranslation> BrandTranslations { get; set; } = new List<BrandTranslation>();
     }
 }

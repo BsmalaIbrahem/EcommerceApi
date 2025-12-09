@@ -16,7 +16,7 @@ namespace SharedLayer.Utility
             {
                 EnableSsl = true,
                 UseDefaultCredentials = false,
-                Credentials = new System.Net.NetworkCredential("bosiebrahem487@gmail.com", "yixy brdi xfvs gwip")
+                Credentials = new System.Net.NetworkCredential("bosiebrahem487@gmail.com", "txex wuwc jafu tclj")
             };
 
             return client.SendMailAsync(

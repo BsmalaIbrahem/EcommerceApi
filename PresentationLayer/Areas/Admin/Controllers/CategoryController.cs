@@ -1,101 +1,108 @@
 ﻿using ApplicationLayer.DTOs;
 using ApplicationLayer.Interfaces.IServices;
-using DomainLayer.Entities;
+using ApplicationLayer.Responses;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+using SharedLayer.Utility;
+using System.Text.Json;
 
 namespace PresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("api/Admin/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
-    public class CategoryController : Controller
+    [Authorize(Roles = "SuperAdmin")]
+    public class CategoryController : ControllerBase
     {
-        private readonly ICategoryService _service;
-        public CategoryController(ICategoryService service) 
+        private readonly ICategoryService _categoryService;
+        
+        public CategoryController(ICategoryService categoryService)
         {
-            _service = service;
+            _categoryService = categoryService;
         }
 
-        [HttpGet("Index")]
-        public async Task<IActionResult> Index()
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
         {
-            var categories = await _service.GetAsync();
-            return Json(new
+            var language = HttpContext.Request.Headers["Accept-Language"];
+            if(string.IsNullOrEmpty(language))
             {
-                success = true,
-                message = "Categories retrieved successfully",
-                data = categories
-            });
+                var categoryById = await _categoryService.GetById(id);
+                return Ok(ApiResponse<CategoryWithTranslatedResponse>.SuccessResponse(200, "Returned successfully", categoryById));
+            }
+
+            var category = await _categoryService.GetByIdAndLanguage(id, language.ToString());
+
+            return Ok(ApiResponse<CategoryResponse>.SuccessResponse(200, "Returned successfully", category));
         }
 
-        [HttpGet("Details/{id}")]
-        public async Task<IActionResult> Details(int id)
+        [HttpGet("get-all")]
+        public async Task<IActionResult> GetAll()
         {
-            if (id <= 0)
+            var language = HttpContext.Request.Headers["Accept-Language"].ToString();
+            if(language == "")
             {
-                return Json(new {success = false, message = "id must be greater than 0", });
+                language = "en";
             }
-
-            if (!await _service.ExistsAsync(id))
-            {
-                return Json(new {success = false, message = $"Category with ID: {id} not found."});
-            }
-
-            var category = await _service.GetOneAsync([c => c.Id == id]);
-            return Json(new {success = true, message = "Details", data = category});
+            var categories = await _categoryService.GetAllByLanguage(language);
+            return Ok(ApiResponse<IEnumerable<CategoryResponse>>.SuccessResponse(200, "Returned", categories));
         }
 
-        [HttpPost("Create")]
-        public async Task<IActionResult> Create(CreateCategoryRequest request)
+        [HttpPost("create")]
+        public async Task<IActionResult> Create([FromForm] CreateCategoryRequest request)
         {
-            if (!ModelState.IsValid)
+            var translations = new List<CategoryTranslationDto>();
+            if (!string.IsNullOrEmpty(request.TranslationsJson))
             {
-                return BadRequest(ModelState);
+                translations = JsonSerializer.Deserialize<List<CategoryTranslationDto>>(request.TranslationsJson);
             }
-            if(!await _service.IsUnique(request.Name))
+            else
             {
-                return Json(new {success = false, message = "Category name must be unique."});
+                return BadRequest(ApiResponse<object>.FailureResponse(400, "Translations are required.\r\n"));
             }
-            var category = new Category
+
+
+            foreach (var t in translations)
             {
-                Name = request.Name,
-                Description = request.Description
-            };
-            await _service.CreateAsync(category);
-            return Json(new {success = true, message = "Category created successfully", data = category});
+                var existed = await _categoryService.IsExited(t.Name, t.LanguageCode);
+                if (existed)
+                {
+                    return BadRequest(ApiResponse<object>.FailureResponse(400, $"The category name '{t.Name}' has already been used for the language '{t.LanguageCode}' and cannot be duplicated.\r\n"));
+                }
+            }
+
+            await _categoryService.Add(request);
+            return Ok(ApiResponse<object>.SuccessResponse(200, "Added Successfully", null));
         }
 
-        [HttpPut("Update/{id}")]
-        public async Task<IActionResult> Update(int id, UpdateCategoryRequest request)
+
+        [HttpPost("edit/{id}")]
+        public async Task<IActionResult> Edit(int id, [FromForm] EditCategoryRequest request)
         {
-            if (id <= 0)
+            var translations = new List<CategoryTranslationDto>();
+            if (!string.IsNullOrEmpty(request.TranslationsJson))
             {
-                return Json(new {success = false, message = "id must be greater than 0", });
+                translations = JsonSerializer.Deserialize<List<CategoryTranslationDto>>(request.TranslationsJson);
             }
-            if (!await _service.ExistsAsync(id))
+            else
             {
-                return Json(new {success = false, message = $"Category with ID: {id} not found."});
+                return BadRequest(ApiResponse<object>.FailureResponse(400, "Translations are required.\r\n"));
             }
-            if (!ModelState.IsValid)
+
+            foreach (var t in translations)
             {
-                return BadRequest(ModelState);
+                var existed = await _categoryService.IsExited(t.Name, t.LanguageCode, id);
+                if (existed)
+                {
+                    return BadRequest(ApiResponse<object>.FailureResponse(400, $"The category name '{t.Name}' has already been used for the language '{t.LanguageCode}' and cannot be duplicated.\r\n"));
+                }
             }
-            if(!await _service.IsUnique(request.Name, id))
-            {
-                return Json(new {success = false, message = "Category name must be unique."});
-            }
-            var category = new Category
-            {
-                Id = id,
-                Name = request.Name,
-                Description = request.Description
-            };
-            
-            await _service.UpdateAsync(category);
-            return Json(new {success = true, message = "Category updated successfully", data = category});
+
+            await _categoryService.Edit(id, request);
+            return Ok(ApiResponse<object>.SuccessResponse(200, "Edited Successfully", null));
         }
+
+
     }
 }

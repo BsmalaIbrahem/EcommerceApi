@@ -132,6 +132,9 @@ namespace InfrastructureLayer.Repositories
             return _context.Set<T>().AsQueryable();
         }
 
-        
+        public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            await _context.SaveChangesAsync(cancellationToken);
+        }
     }
 }

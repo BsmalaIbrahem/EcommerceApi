@@ -9,10 +9,8 @@ namespace ApplicationLayer.DTOs
 {
     public record RegisterRequest
     {
-        [Required(ErrorMessage = "First name is required.")]
-        public string FirstName { get; set; } = string.Empty;
-        [Required(ErrorMessage = "Last name is required.")]
-        public string LastName { get; set; } = string.Empty;
+        public string? FirstName { get; set; } = "No name";
+        public string? LastName { get; set; } = "No name";
         [Required(ErrorMessage = "User name is required.")]
         public string UserName { get; set; } = string.Empty;
         [Required(ErrorMessage = "Email is required.")]

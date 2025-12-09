@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Entities
 {
-    public class Category : BaseEntity
+    public class BaseTranslation : BaseEntity
     {
         public int Id { get; set; }
-        public string? ImagePath { get; set; }
-        public ICollection<CategoryTranslation> CategoryTranslations { get; set; } = new List<CategoryTranslation>();
+        public int LanguageId { get; set; }
+        public Languages Language { get; set; } = null!;
+        [NotMapped]
+        public string LanguageCode => Language != null ? Language.Code : string.Empty;
     }
 }

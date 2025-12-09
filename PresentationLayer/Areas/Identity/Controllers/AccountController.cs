@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using SharedLayer.Utility;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -43,7 +44,8 @@ namespace PresentationLayer.Areas.Identity.Controllers
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 UserName = request.UserName,
-                Email = request.Email
+                Email = request.Email,
+                EmailConfirmed = true
             };
             var result = await _userManager.CreateAsync(user, request.Password);
             
@@ -51,11 +53,11 @@ namespace PresentationLayer.Areas.Identity.Controllers
             {
                 return Json(new { success = false, message = "Registration failed.", errors = result.Errors });
             }
-            await _userManager.AddToRoleAsync(user, "User");
+            await _userManager.AddToRoleAsync(user, SD.Customer);
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var confirmationLink = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, token = token }, Request.Scheme);
-            await _emailSender.SendEmailAsync(request.Email, "Confirm your email", $"Please confirm your account by clicking this link: <a href='{confirmationLink}'>link</a>");
-            return Json(new { success = true, message = "Confirm email sended" });
+            //await _emailSender.SendEmailAsync(request.Email, "Confirm your email", $"Please confirm your account by clicking this link: <a href='{confirmationLink}'>link</a>");
+            return Json(new { success = true, message = "Registered Successfully" });
         }
 
         [HttpGet("ConfirmEmail")]
@@ -109,15 +111,21 @@ namespace PresentationLayer.Areas.Identity.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Name, user.UserName!),
                 new Claim(ClaimTypes.Email, user.Email!),
-                new Claim(ClaimTypes.Role, string.Join(",", roles)),
             };
+
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
+
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("EraaSoft514##EraaSoft514##EraaSoft514##"));
 
             var signInCredential = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
                 issuer : "https://localhost:7121",
-                audience : "https://localhost:4200,https://localhost:5000",
+                audience: "delish-api",
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: signInCredential
@@ -125,8 +133,8 @@ namespace PresentationLayer.Areas.Identity.Controllers
             );
 
             return Json(new { 
-                success = false, 
-                message = "Login functionality not implemented yet.", 
+                success = true, 
+                message = "Logined Successfuly", 
                 data = new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),

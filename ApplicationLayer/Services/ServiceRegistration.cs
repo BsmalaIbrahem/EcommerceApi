@@ -12,7 +12,7 @@ namespace ApplicationLayer.Services
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IBookService, BookService>();
+            services.AddScoped<ILanguageService, LanguageService>();
             services.AddScoped<ICategoryService, CategoryService>();
 
             return services;

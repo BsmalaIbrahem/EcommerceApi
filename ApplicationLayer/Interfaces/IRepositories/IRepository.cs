@@ -21,7 +21,7 @@ namespace ApplicationLayer.Interfaces.IRepositories
         Task AddAsync(T entity);
         void UpdateAsync(T entity);
         Task DeleteAsync(Expression<Func<T, bool>> expression);
-       
+        Task SaveChangesAsync(CancellationToken cancellationToken = default);
         IQueryable<T> Query();
     }
 }

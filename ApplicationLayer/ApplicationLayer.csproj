@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DomainLayer\DomainLayer.csproj" />
+    <ProjectReference Include="..\SharedLayer\SharedLayer.csproj" />
   </ItemGroup>
 
 </Project>
