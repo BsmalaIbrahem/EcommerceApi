@@ -25,6 +25,7 @@ namespace InfrastructureLayer.Data
         public DbSet<ProductReview> ProductReviews { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Coupon> Coupons { get; set; }
+        public DbSet<Advertisement> Advertisements { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

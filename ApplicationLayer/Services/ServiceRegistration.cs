@@ -16,6 +16,8 @@ namespace ApplicationLayer.Services
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IDiscountService, DiscountService>();
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IAdService, AdService>();
 
             return services;
         }
