@@ -20,6 +20,11 @@ namespace InfrastructureLayer.Data
         public DbSet<Languages> Languages { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<ProductReview> ProductReviews { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
+        public DbSet<Coupon> Coupons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

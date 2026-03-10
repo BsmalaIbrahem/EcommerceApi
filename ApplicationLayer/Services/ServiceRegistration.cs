@@ -14,6 +14,8 @@ namespace ApplicationLayer.Services
         {
             services.AddScoped<ILanguageService, LanguageService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IDiscountService, DiscountService>();
 
             return services;
         }

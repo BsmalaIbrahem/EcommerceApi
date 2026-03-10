@@ -50,7 +50,7 @@ namespace PresentationLayer.Areas.Admin.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> Create([FromForm] CreateCategoryRequest request)
+        public async Task<IActionResult> Add([FromForm] CreateCategoryRequest request)
         {
             var translations = new List<CategoryTranslationDto>();
             if (!string.IsNullOrEmpty(request.TranslationsJson))
