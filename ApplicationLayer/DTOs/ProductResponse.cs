@@ -20,6 +20,7 @@ namespace ApplicationLayer.DTOs
         public bool IsFlashSale { get; set; } // عشان الـ Countdown
         public decimal? DiscountPercentage { get; set; } // نسبة الخصم لو كان خصم بالنسبة المئوية
         public DateTime? OfferEndDate { get; set; } // نهاية الخصم لو كان خصم بالنسبة المئوية
+        public List<ProductResponse>? RecommendedProducts { get; set; } // المنتجات المقترحة (Recommended)
     }
 
     public class ProductWithTranslatedResponse

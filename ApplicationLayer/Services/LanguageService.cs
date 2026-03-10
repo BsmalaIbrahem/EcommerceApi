@@ -16,7 +16,7 @@ namespace ApplicationLayer.Services
         {
             _languageRepository = languageRepository;
         }
-        public async Task<Languages> GetByCode(string code)
+        public async Task<Languages> GetByCode(string code = "en")
         {
             var language = await _languageRepository.GetOneAsync([x => x.Code == code]);
             if (language == null)

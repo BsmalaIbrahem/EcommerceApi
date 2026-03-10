@@ -18,6 +18,8 @@ namespace ApplicationLayer.Services
             services.AddScoped<IDiscountService, DiscountService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IAdService, AdService>();
+            services.AddScoped<IHomeService, HomeService>();
+            services.AddScoped<IWishlistService, WishlistService>();
 
             return services;
         }
