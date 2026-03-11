@@ -1,4 +1,6 @@
-﻿using ApplicationLayer.Interfaces.IServices;
+﻿using ApplicationLayer.DTOs;
+using ApplicationLayer.Interfaces.IServices;
+using ApplicationLayer.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +22,7 @@ namespace PresentationLayer.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // جلب الـ ID من التوكن
             await _wishlistService.ToggleWishlist(userId!, productId);
-            return Ok(new { message = "Wishlist updated" });
+            return Ok(ApiResponse<object>.SuccessResponse(200, "Added Successfully", null));
         }
 
         // جلب القائمة بالكامل للغة معينة
@@ -35,7 +37,7 @@ namespace PresentationLayer.Controllers
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = await _wishlistService.GetUserWishlist(userId!, language);
-            return Ok(result);
+            return Ok(ApiResponse<IEnumerable<ProductResponse>>.SuccessResponse(200, "Returned", result));
         }
     }
 }

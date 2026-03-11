@@ -20,6 +20,7 @@ namespace ApplicationLayer.Services
             services.AddScoped<IAdService, AdService>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IWishlistService, WishlistService>();
+            services.AddScoped<IContactService, ContactService>();
 
             return services;
         }
