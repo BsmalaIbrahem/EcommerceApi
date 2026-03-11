@@ -28,6 +28,7 @@ namespace InfrastructureLayer.Data
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<Wishlist> Wishlists { get; set; }
         public DbSet<ContactMessage> ContactMessages { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
