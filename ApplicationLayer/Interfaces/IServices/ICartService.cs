@@ -15,5 +15,6 @@ namespace ApplicationLayer.Interfaces.IServices
         Task<CartResponse> GetUserCart(string userId, string language);
         Task MergeGuestCartIntoUserCart(string userId, List<CartItemRequest> guestItems);
         Task<int> GetCartItemsCount(string userId);
+        Task ClearCart(string userId);
     }
 }

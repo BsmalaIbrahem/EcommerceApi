@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using SharedLayer.Utility;
+using Stripe;
 using System.Globalization;
 using System.Text;
 
@@ -107,6 +108,10 @@ builder.Services.AddLocalization(options => options.ResourcesPath = "Resources")
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IUrlService, UrlService>();
+
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+
 
 
 var app = builder.Build();

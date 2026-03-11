@@ -22,6 +22,7 @@ namespace ApplicationLayer.Services
             services.AddScoped<IWishlistService, WishlistService>();
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<ICartService, CartService>();
+            services.AddScoped<IOrderService, OrderService>();
 
             return services;
         }

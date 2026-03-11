@@ -158,5 +158,20 @@ namespace ApplicationLayer.Services
             return cart.CartItems.Sum(ci => ci.Quantity);
         }
 
+        public async Task ClearCart(string userId)
+        {
+            var cart = await _cartRepo.GetOneAsync(
+                filters: [c => c.UserId == userId],
+                includeChain: q => q.Include(c => c.CartItems)
+            );
+
+            if (cart != null && cart.CartItems.Any())
+            {
+                // بنمسح الـ Items نفسها
+                cart.CartItems.Clear();
+                await _cartRepo.SaveChangesAsync();
+            }
+        }
+
     }
 }
